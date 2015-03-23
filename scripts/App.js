@@ -27,10 +27,17 @@ const App = React.createClass({
         window.removeEventListener('resize', this.handleResize);
     },
 
+
+    videoOptions: {
+      src: "../assets/videos/oceans-clip.mp4",//video url goes here
+      type: "video/mp4",//video type here
+    },
+
+
     render() {
       return (
           <div className='App' ref='master'> 
-            <VideoPlayer width={this.state.vidWidth} src="../assets/videos/oceans-clip.mp4" type="video/mp4"/>
+            <VideoPlayer width={this.state.vidWidth} src={this.videoOptions.src} type={this.videoOptions.type} />
           </div>
       );
     }

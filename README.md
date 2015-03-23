@@ -5,10 +5,14 @@ This is a very simple example of responsive video player using ReactJS.
 
 ### Running
 
+Set the video options in App.js and then run:
+
 ```
 npm install
 npm start
 ```
+
+Point your browser to http://localhost:3000/ and try to resize window.
 
 ### 
 
