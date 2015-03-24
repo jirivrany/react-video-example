@@ -4,7 +4,7 @@ import React from 'react';
 
 
 
-let VideoPlayer = React.createClass({
+export default React.createClass({
 
     render: function() {
 
@@ -16,6 +16,3 @@ let VideoPlayer = React.createClass({
             </div>);
     }
 });
-
-export default VideoPlayer;
-
