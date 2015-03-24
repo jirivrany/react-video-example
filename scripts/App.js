@@ -3,7 +3,7 @@
 import React from 'react';
 import VideoPlayer from './components/VideoPlayer';
 
-const App = React.createClass({
+export default React.createClass({
    getInitialState: function() {
         return {
             vidWidth: 0
@@ -42,5 +42,3 @@ const App = React.createClass({
       );
     }
 });
-
-export default App;
