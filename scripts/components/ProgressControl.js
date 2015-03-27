@@ -65,19 +65,26 @@ export default React.createClass({
         let timeInfo = <Tooltip>{this.state.seekTime}</Tooltip>;
 
         return (
-
-            <div className='progress-controls'>
-                  <OverlayTrigger   placement='bottom' 
-                                    overlay={timeInfo}>
-      
-                  
+            <div className='progress-controls' onClick={this._seek} onMouseOver={this._onMouseSeek} 
+                                onMouseMove={this._onMouseSeek} >
+                 
+                  SEEK: {this.state.seekTime}
+                 
                   <ProgressBar  ref="seekbar" 
                                 now={this.state.progress}  
-                                onClick={this._seek} 
-                                onMouseOver={this._onMouseSeek} 
-                                onMouseMove={this._onMouseSeek}
+                                
+                                
                                 />
-                  </OverlayTrigger>  
+
+                 <div style={{width: '100%', position: 'relative', top: '-40px', float: 'left'}}>
+                    <div style={{background: 'transparent', width: '50px', float: 'left'}}>&nbsp;</div>
+                    <div style={{background: 'red', width: '5px', float: 'left'}}>&nbsp;</div>
+                    <div style={{background: 'transparent', width: '50px', float: 'left'}}>&nbsp;</div>
+                    <div style={{background: 'orange', width: '5px',float: 'left'}}>&nbsp;</div>
+                    <div style={{background: 'transparent', width: '250px', float: 'left'}}>&nbsp;</div>
+                    <div style={{background: 'orange', width: '5px',float: 'left'}}>&nbsp;</div>
+                  </div>  
+                       
             </div>
         );
     }
