@@ -3,7 +3,7 @@ import {ProgressBar, OverlayTrigger, Tooltip} from 'react-bootstrap';
 import {toVideoDuration} from '../utils/timeFunctions';
 
 
-let ProgressControls = React.createClass({
+export default React.createClass({
 
     getInitialState() {
 
@@ -82,5 +82,3 @@ let ProgressControls = React.createClass({
         );
     }
 });
-
-export default ProgressControls;
