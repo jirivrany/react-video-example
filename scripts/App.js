@@ -2,11 +2,13 @@
 
 import React from 'react';
 import VideoPlayer from './components/VideoPlayer';
+import ControlPanel from './components/ControlPanel';
 
 export default React.createClass({
    getInitialState: function() {
         return {
-            vidWidth: 0
+            vidWidth: 0,
+            playerApi: undefined
         };
 
     },
@@ -18,8 +20,13 @@ export default React.createClass({
         });
     },
 
+    initPlayerApi: function() {
+       this.setState({ api: this.refs.player.refs.api.getDOMNode() });
+    },
+
     componentDidMount: function() {
         this.handleResize();
+        this.initPlayerApi();
         window.addEventListener('resize', this.handleResize);
     },
 
@@ -36,8 +43,9 @@ export default React.createClass({
 
     render() {
       return (
-          <div className='App' ref='master'> 
-            <VideoPlayer width={this.state.vidWidth} src={this.videoOptions.src} type={this.videoOptions.type} />
+          <div className='Container' ref='master'> 
+            <VideoPlayer ref='player' width={this.state.vidWidth} src={this.videoOptions.src} type={this.videoOptions.type} />
+            <ControlPanel api={this.state.api} />
           </div>
       );
     }
