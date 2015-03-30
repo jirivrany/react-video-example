@@ -87,7 +87,11 @@ export default React.createClass({
                             duration={this.props.duration}
                  />
 
+<<<<<<< HEAD
                   <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100  }} >
+=======
+                <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100}} >
+>>>>>>> new-time-marks
                     <strong>{this.state.seekTime}</strong>
                     <br />
                     <Thumbnail video={this.props.thumbnail} seek={this.state.rawSeekTime} width="200px" />  
