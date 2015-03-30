@@ -46,8 +46,8 @@ export default React.createClass({
 
 
     videoOptions: {
-      src: "../assets/videos/oceans-clip.mp4",//video url goes here
-      type: "video/mp4",//video type here
+      src: "http://media.xiph.org/mango/tears_of_steel_1080p.webm", //video url goes here
+      type: "video/webm", //video type here
       timeMarks: [10, 20, 30.6, 17], //time (s) when something needs to be marked as important 
     },
 
