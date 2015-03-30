@@ -1,7 +1,8 @@
 import React from 'react';
-import {ProgressBar, OverlayTrigger, Tooltip} from 'react-bootstrap';
-import {toVideoDuration} from '../utils/timeFunctions';
+import {ProgressBar} from 'react-bootstrap';
+import {toVideoDuration} from '../utils/';
 import Thumbnail from '../components/Thumbnail';
+import BarMarker from '../components/BarMarker';
 
 
 export default React.createClass({
@@ -13,7 +14,7 @@ export default React.createClass({
             seekTime: 0,
             rawSeekTime: 0,
             showTicket: 'hidden',
-            ticketLeft: 0
+            ticketLeft: 0,
         };
     },
 
@@ -21,7 +22,7 @@ export default React.createClass({
 
        if (this.props.api !== nextProps.api) {
             nextProps.api.addEventListener('timeupdate', this._onTimeUpdate, false);
-       }
+      }
 
     },
 
@@ -69,8 +70,6 @@ export default React.createClass({
     },
 
     render() {
-        let timeInfo = <Tooltip>{this.state.seekTime}</Tooltip>;
-
         return (
             <div className='progress-controls' 
                                 onClick={this._seek} 
@@ -79,25 +78,21 @@ export default React.createClass({
                                 onMouseOut={this._onMouseOut}
                                 >
                  
-                  <ProgressBar ref="seekbar" 
+                <ProgressBar ref="seekbar" 
                                 now={this.state.progress}  
                                 />
 
-                 <div style={{width: '100%', position: 'relative', top: '-40px', float: 'left'}}>
-                    <div style={{background: 'transparent', width: '50px', float: 'left'}}>&nbsp;</div>
-                    <div style={{background: 'red', width: '5px', float: 'left'}}>&nbsp;</div>
-                    <div style={{background: 'transparent', width: '50px', float: 'left'}}>&nbsp;</div>
-                    <div style={{background: 'orange', width: '5px',float: 'left'}}>&nbsp;</div>
-                    <div style={{background: 'transparent', width: '250px', float: 'left'}}>&nbsp;</div>
-                    <div style={{background: 'orange', width: '5px',float: 'left'}}>&nbsp;</div>
-                  </div>  
+                <BarMarker timeMarks={this.props.thumbnail.timeMarks}
+                            barWidth={this.props.vidWidth}
+                            duration={this.props.duration}
+                 />
 
-                  <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft }} >
+                <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100}} >
                     <strong>{this.state.seekTime}</strong>
                     <br />
                     <Thumbnail video={this.props.thumbnail} seek={this.state.rawSeekTime} width="200px" />  
                        
-                  </div>
+                </div>
 
                   
             </div>
