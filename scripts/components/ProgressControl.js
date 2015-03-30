@@ -92,7 +92,7 @@ export default React.createClass({
                     <div style={{background: 'orange', width: '5px',float: 'left'}}>&nbsp;</div>
                   </div>  
 
-                  <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft }} >
+                  <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100  }} >
                     <strong>{this.state.seekTime}</strong>
                     <br />
                     <Thumbnail video={this.props.thumbnail} seek={this.state.rawSeekTime} width="200px" />  

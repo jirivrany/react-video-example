@@ -1,7 +1,13 @@
 React Video Example
 =========================
 
-This is a very simple example of responsive video player using ReactJS.
+This is a very simple example of responsive video player using ReactJS. 
+
+Features:
+
+* responsive resize
+* custom seekbar 
+* seekbar thumbnails computed in real time from preloaded video
 
 ### Running
 
@@ -16,4 +22,4 @@ Point your browser to http://localhost:3000/ and try to resize window.
 
 ### 
 
-Basic React and Webpack boilerplate taken from great [`Gaearon - flux-react-router-example`](https://github.com/gaearon/flux-react-router-example/)
+Basic React and Webpack boilerplate taken from great [`flux-react-router-example`](https://github.com/gaearon/flux-react-router-example/) made by [`Dan Abramov`](https://github.com/gaearon/)
