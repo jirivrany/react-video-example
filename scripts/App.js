@@ -8,20 +8,24 @@ export default React.createClass({
    getInitialState: function() {
         return {
             vidWidth: 0,
-            playerApi: undefined
+            offsetLeft: 0,
+            api: undefined,
+            player: undefined,
         };
 
     },
 
     handleResize: function() {
         let player = this.refs.master.getDOMNode();
+        
         this.setState({
-            vidWidth: player.clientWidth
+            vidWidth: player.clientWidth,
+            offsetLeft: player.offsetLeft 
         });
     },
 
     initPlayerApi: function() {
-       this.setState({ api: this.refs.player.refs.api.getDOMNode() });
+       this.setState({ api: this.refs.player.refs.api.getDOMNode(), player: this.refs.player.getDOMNode() });
     },
 
     componentDidMount: function() {
@@ -42,10 +46,13 @@ export default React.createClass({
 
 
     render() {
+
+   
       return (
           <div className='Container' ref='master'> 
             <VideoPlayer ref='player' width={this.state.vidWidth} src={this.videoOptions.src} type={this.videoOptions.type} />
-            <ControlPanel api={this.state.api} />
+            <ControlPanel {...this.state} thumbnail={this.videoOptions} />
+            
           </div>
       );
     }
