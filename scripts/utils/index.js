@@ -15,3 +15,6 @@ export function toVideoDuration(givenTime){
   return group.join(":");
 }
 
+export function compareNumbers(a, b) {
+  return a - b;
+}

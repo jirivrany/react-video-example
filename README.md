@@ -1,13 +1,16 @@
 React Video Example
 =========================
 
-This is a very simple example of responsive video player using ReactJS. 
+This is a simple example of responsive video player using ReactJS.
 
-Features:
+Features
 
-* responsive resize
-* custom seekbar 
-* seekbar thumbnails computed in real time from preloaded video
+* responsive video resize
+* seek bar with custom time marks
+* video thumbnails on seek bar
+
+
+>>>>>>> new-time-marks
 
 ### Running
 
