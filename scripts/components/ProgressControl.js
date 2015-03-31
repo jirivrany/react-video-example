@@ -7,7 +7,7 @@ import BarMarker from '../components/BarMarker';
 
 export default React.createClass({
 
-    getInitialState() {
+    getInitialState: function() {
 
         return {
             progress: 0,
@@ -18,24 +18,17 @@ export default React.createClass({
         };
     },
 
-    componentWillReceiveProps (nextProps) {
-
-       if (this.props.api !== nextProps.api) {
-            nextProps.api.addEventListener('timeupdate', this._onTimeUpdate, false);
-      }
-
-    },
-
-    componentDidMount() {
+    componentDidMount: function() {
+        this.props.api.addEventListener('timeupdate', this._onTimeUpdate, false);
         this._updateBarState();
     },
 
-    _updateBarState() {
+    _updateBarState: function() {
         let bar = this.refs.seekbar.getDOMNode();
         this.setState({offsetLeft: bar.offsetLeft});
     },
 
-    _onMouseSeek(event) {
+    _onMouseSeek: function(event) {
         let api = this.props.api,
             pos = (event.pageX -  this.props.offsetLeft) / this.props.vidWidth, 
             ttt = pos * api.duration;
@@ -46,7 +39,7 @@ export default React.createClass({
                         ticketLeft: event.pageX });
     },
 
-    _onTimeUpdate() {
+    _onTimeUpdate: function() {
 
         let api = this.props.api,
             progress = Math.floor((100 / api.duration) * api.currentTime);
@@ -55,21 +48,22 @@ export default React.createClass({
     },
 
 
-    _onMouseOut() {
+    _onMouseOut: function() {
 
         this.setState( {showTicket: 'hidden'});
     },
 
-    _seek (event) {
+    _seek: function(event) {
        
 
         let api = this.props.api,
             pos = (event.pageX - this.props.offsetLeft) / this.props.vidWidth; 
         
+
         api.currentTime = pos * api.duration;
     },
 
-    render() {
+    render: function() {
         return (
             <div className='progress-controls' 
                                 onClick={this._seek} 
@@ -79,7 +73,8 @@ export default React.createClass({
                                 >
                  
                 <ProgressBar ref="seekbar" 
-                                now={this.state.progress}  
+                                now={this.state.progress}
+                                style={{width: this.props.vidWidth + 'px'}}  
                                 />
 
                 <BarMarker timeMarks={this.props.thumbnail.timeMarks}
@@ -87,7 +82,7 @@ export default React.createClass({
                             duration={this.props.duration}
                  />
 
-                  <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100  }} >
+                   <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100  }} >
                     <strong>{this.state.seekTime}</strong>
                     <br />
                     <Thumbnail video={this.props.thumbnail} seek={this.state.rawSeekTime} width="200px" />  

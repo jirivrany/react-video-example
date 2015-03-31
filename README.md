@@ -11,7 +11,7 @@ Features
 
 ### Running
 
-Set the video options in App.js and then run:
+Set the video options in config.js and then run:
 
 ```
 npm install

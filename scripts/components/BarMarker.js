@@ -15,27 +15,31 @@ export default React.createClass({
     
     componentDidMount: function() {
         if (this.props.duration) {
-            let oneSecond = Math.floor(this.props.barWidth / this.props.duration);
+            let oneSecond = this.props.barWidth / this.props.duration;
             this.setState({oneSecond: oneSecond});       
         }
+
     },
     
     render: function() {
         let oneSecond = this.state.oneSecond;
         let sortedMarks = this.props.timeMarks.sort(compareNumbers);
+
         let marks = sortedMarks.map(function(mark, index, values){
             let current, previous, markVal;
 
-            current = oneSecond * mark - 5;
-            previous = oneSecond * values[index-1] - 5;
+            current = oneSecond * mark  - 3;
+            previous = oneSecond * values[index-1] - 3;
+            
             previous = previous ? previous : 0;//fix NaN for the first value
             
-            markVal = current - previous;
 
+            markVal = Math.floor(current - previous);
+            
             return(
                 <div key={mark} style={{float: 'left'}}>
                     <div style={{background: 'transparent', width:  markVal + 'px', float: 'left'}}>&nbsp;</div>
-                    <div style={{background: 'orange', width: '5px', float: 'left'}}>&nbsp;</div>
+                    <div style={{background: 'orange', width: '3px', float: 'left'}}>&nbsp;</div>
                 </div>
             );
         });

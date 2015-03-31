@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import videoOptions from './config';
 import VideoPlayer from './components/VideoPlayer';
 import ControlPanel from './components/ControlPanel';
 
@@ -16,7 +17,7 @@ export default React.createClass({
 
     },
 
-    handleResize: function() {
+    _handleResize: function() {
         let master = this.refs.master.getDOMNode();
         this.setState({
             vidWidth: master.clientWidth,
@@ -35,35 +36,27 @@ export default React.createClass({
     },
 
     componentDidMount: function() {
-        this.handleResize();
+        this._handleResize();
         this.initPlayerApi();
-        window.addEventListener('resize', this.handleResize);
+        window.addEventListener('resize', this._handleResize);
     },
 
     componentWillUnmount: function() {
-        window.removeEventListener('resize', this.handleResize);
+        window.removeEventListener('resize', this._handleResize);
     },
 
-
-    videoOptions: {
-      src: "../assets/videos/oceans-clip.mp4",//video url goes here
-      type: "video/mp4",//video type here
-      timeMarks: [10, 20, 30.6, 17], //time (s) when something needs to be marked as important 
-    },
-
-
-    render() {
+    render: function() {
       let cpan;
-      if (this.state.duration > 0) {
-        cpan = <ControlPanel {...this.state} thumbnail={this.videoOptions} />;
+      if (this.state.duration > 0) { //don't mount the seekbar until metadata are loaded
+        cpan = <ControlPanel {...this.state} thumbnail={videoOptions} />;
       }   
       
       return (
-          <div className='Container' ref='master'> 
+          <div className='row' ref='master'> 
             <VideoPlayer  ref='player' 
                           width={this.state.vidWidth} 
-                          src={this.videoOptions.src} 
-                          type={this.videoOptions.type} 
+                          src={videoOptions.src} 
+                          type={videoOptions.type} 
                           />
 
             {cpan}
