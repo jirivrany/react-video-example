@@ -1,7 +1,7 @@
 React Video Example
 =========================
 
-This is a example of responsive video player using ReactJS.
+This is a example of responsive video player using ReactJS. [Check out the live demo](http://jirivrany.github.io/react-video-example/).
 
 Features
 
