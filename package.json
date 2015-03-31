@@ -1,7 +1,7 @@
 {
-  "name": "flux-react-router-example",
-  "version": "0.2.0",
-  "description": "A sample app featuring Flux and React Router",
+  "name": "react-video-example",
+  "version": "0.1.0",
+  "description": "A sample app featuring video player in ReactJS",
   "dependencies": {
     "react": "^0.13.1",
     "react-bootstrap": "~0.19.1"
