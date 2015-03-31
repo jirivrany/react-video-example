@@ -12,16 +12,16 @@ export default React.createClass({
         };
 
     },
-    
-    componentDidMount: function() {
-        if (this.props.duration) {
-            let oneSecond = this.props.barWidth / this.props.duration;
+
+    componentWillReceiveProps: function(nextProps) {
+        if (nextProps.duration) {
+            let oneSecond = nextProps.barWidth / nextProps.duration;
             this.setState({oneSecond: oneSecond});       
         }
-
     },
     
     render: function() {
+        
         let oneSecond = this.state.oneSecond;
         let sortedMarks = this.props.timeMarks.sort(compareNumbers);
 
