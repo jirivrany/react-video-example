@@ -1,3 +1,4 @@
+/*eslint-disable no-unused-vars*/
 import React from 'react';
 import {ProgressBar} from 'react-bootstrap';
 import {toVideoDuration} from '../utils/';
@@ -14,7 +15,7 @@ export default React.createClass({
             seekTime: 0,
             rawSeekTime: 0,
             showTicket: 'hidden',
-            ticketLeft: 0,
+            ticketLeft: 0
         };
     },
 
@@ -30,11 +31,11 @@ export default React.createClass({
 
     _onMouseSeek: function(event) {
         let api = this.props.api,
-            pos = (event.pageX -  this.props.offsetLeft) / this.props.vidWidth, 
+            pos = (event.pageX - this.props.offsetLeft) / this.props.vidWidth,
             ttt = pos * api.duration;
 
         this.setState( {seekTime: toVideoDuration(ttt),
-                        rawSeekTime: ttt,  
+                        rawSeekTime: ttt,
                         showTicket: 'visible',
                         ticketLeft: event.pageX });
     },
@@ -54,27 +55,27 @@ export default React.createClass({
     },
 
     _seek: function(event) {
-       
+
 
         let api = this.props.api,
-            pos = (event.pageX - this.props.offsetLeft) / this.props.vidWidth; 
-        
+            pos = (event.pageX - this.props.offsetLeft) / this.props.vidWidth;
+
 
         api.currentTime = pos * api.duration;
     },
 
     render: function() {
         return (
-            <div className='progress-controls' 
-                                onClick={this._seek} 
-                                onMouseOver={this._onMouseSeek} 
-                                onMouseMove={this._onMouseSeek} 
+            <div className='progress-controls'
+                                onClick={this._seek}
+                                onMouseOver={this._onMouseSeek}
+                                onMouseMove={this._onMouseSeek}
                                 onMouseOut={this._onMouseOut}
                                 >
-                 
-                <ProgressBar ref="seekbar" 
+
+                <ProgressBar ref="seekbar"
                                 now={this.state.progress}
-                                style={{width: this.props.vidWidth + 'px'}}  
+                                style={{width: this.props.vidWidth + 'px'}}
                                 />
 
                 <BarMarker timeMarks={this.props.thumbnail.timeMarks}
@@ -82,16 +83,16 @@ export default React.createClass({
                             duration={this.props.duration}
                  />
 
-                   <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100  }} >
+                   <div style={{visibility: this.state.showTicket, position: 'absolute', left: this.state.ticketLeft - 100 }} >
                     <strong>{this.state.seekTime}</strong>
                     <br />
-                    <Thumbnail video={this.props.thumbnail} seek={this.state.rawSeekTime} width="200px" />  
-                       
+                    <Thumbnail video={this.props.thumbnail} seek={this.state.rawSeekTime} width="200px" />
+
                 </div>
 
-                  
+
             </div>
-                  
+
         );
     }
 });

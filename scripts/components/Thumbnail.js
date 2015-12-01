@@ -1,3 +1,4 @@
+/*eslint-disable no-unused-vars*/
 'use strict';
 
 import React from 'react';
@@ -10,7 +11,7 @@ export default React.createClass({
     },
 
     render: function() {
-        
+
         return (
             <video ref="thumbnail" width={this.props.width} preload='auto'>
                     <source src={this.props.video.src} type={this.props.video.type} />

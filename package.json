@@ -1,19 +1,25 @@
 {
   "name": "react-video-example",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A sample app featuring video player in ReactJS",
   "dependencies": {
-    "react": "^0.13.1",
-    "react-bootstrap": "~0.19.1"
+    "react": "^0.14.3",
+    "react-bootstrap": "~0.28.1"
   },
   "devDependencies": {
-    "babel-core": "^4.7.16",
-    "babel-loader": "^4.2.0",
-    "react-hot-loader": "^1.2.4",
-    "request": "^2.54.0",
-    "webpack": "^1.7.3",
-    "webpack-dev-server": "^1.7.0",
-    "css-loader": "~0.9.1"
+    "babel-core": "^6.2.1",
+    "babel-eslint": "^5.0.0-beta4",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-react-transform": "^1.1.1",
+    "eslint": "^1.10.2",
+    "eslint-plugin-react": "^3.11.2",
+    "express": "^4.13.3",
+    "react-transform-catch-errors": "^1.0.0",
+    "react-transform-webpack-hmr": "^0.1.6",
+    "redbox-react": "^1.2.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-hot-middleware": "^2.6.0"
   },
   "scripts": {
     "start": "node server.js",

@@ -1,8 +1,7 @@
+/*eslint-disable no-unused-vars*/
 'use strict';
 
 import React from 'react';
-
-
 
 
 export default React.createClass({

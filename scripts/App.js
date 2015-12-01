@@ -1,3 +1,4 @@
+/*eslint-disable no-unused-vars*/
 'use strict';
 
 import React from 'react';
@@ -6,13 +7,13 @@ import VideoPlayer from './components/VideoPlayer';
 import ControlPanel from './components/ControlPanel';
 
 export default React.createClass({
-    
+
     getInitialState: function() {
         return {
             vidWidth: 0,
             offsetLeft: 0,
             api: undefined,
-            duration: 0,
+            duration: 0
         };
 
     },
@@ -21,7 +22,7 @@ export default React.createClass({
         let master = this.refs.master.getDOMNode();
         this.setState({
             vidWidth: master.clientWidth,
-            offsetLeft: master.offsetLeft,
+            offsetLeft: master.offsetLeft
         });
     },
 
@@ -49,18 +50,18 @@ export default React.createClass({
       let cpan;
       if (this.state.duration > 0) { //don't mount the seekbar until metadata are loaded
         cpan = <ControlPanel {...this.state} thumbnail={videoOptions} />;
-      }   
-      
+      }
+
       return (
-          <div className='row' ref='master'> 
-            <VideoPlayer  ref='player' 
-                          width={this.state.vidWidth} 
-                          src={videoOptions.src} 
-                          type={videoOptions.type} 
+          <div className='row' ref='master'>
+            <VideoPlayer ref='player'
+                          width={this.state.vidWidth}
+                          src={videoOptions.src}
+                          type={videoOptions.type}
                           />
 
             {cpan}
-            
+
           </div>
       );
     }
