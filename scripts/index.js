@@ -1,3 +1,4 @@
+/*eslint-disable no-unused-vars*/
 'use strict';
 
 import React from 'react';
